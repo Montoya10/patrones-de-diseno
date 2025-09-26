@@ -1,0 +1,22 @@
+@startuml Prototype
+skinparam backgroundColor #1e1e1e
+skinparam classBackgroundColor #2d2d2d
+skinparam classBorderColor #999999
+skinparam classArrowColor #cccccc
+skinparam shadowing false
+skinparam roundcorner 10
+hide empty members
+
+class Address {
+  +city: str
+  +street: str
+}
+class Person {
+  -name: str
+  -address: Address
+  +clone(): Person
+}
+
+Person *-- Address
+
+@enduml

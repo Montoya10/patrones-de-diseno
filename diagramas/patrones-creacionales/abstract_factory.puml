@@ -1,0 +1,38 @@
+@startuml AbstractFactory
+skinparam backgroundColor #1e1e1e
+skinparam classBackgroundColor #2d2d2d
+skinparam classBorderColor #999999
+skinparam classArrowColor #cccccc
+skinparam shadowing false
+skinparam roundcorner 10
+hide empty members
+
+interface Button {
+  +render(): str
+}
+interface Checkbox {
+  +toggle(): str
+}
+
+class WinButton
+class MacButton
+class WinCheckbox
+class MacCheckbox
+
+interface GUIFactory {
+  +create_button(): Button
+  +create_checkbox(): Checkbox
+}
+class WinFactory
+class MacFactory
+
+Button <|.. WinButton
+Button <|.. MacButton
+Checkbox <|.. WinCheckbox
+Checkbox <|.. MacCheckbox
+GUIFactory <|-- WinFactory
+GUIFactory <|-- MacFactory
+GUIFactory ..> Button : crea
+GUIFactory ..> Checkbox : crea
+
+@enduml
